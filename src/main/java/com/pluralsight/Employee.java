@@ -6,13 +6,15 @@ public class Employee {
     private String department;
     private double payRate;
     private double hoursWorked;
+    private double startTime;
 
     public Employee(int employeeId, String name, String department, double payRate, double hoursWorked) {
         this.employeeId = employeeId;
         this.name = name;
         this.department = department;
         this.payRate = payRate;
-        this.hoursWorked = hoursWorked;
+        this.hoursWorked = 0;
+        this.startTime = 0;
     }
 
     public int getEmployeeId() {
@@ -34,6 +36,17 @@ public class Employee {
     public double getHoursWorked() {
         return hoursWorked;
     }
+
+    public void punchIn(double time) {
+        startTime = time;
+    }
+
+    public void punchOut(double time) {
+        double duration = time - startTime;
+        hoursWorked += duration;
+        startTime = 0;
+    }
+
 
     public double getTotalPay() {
         if (hoursWorked <= 40) {
@@ -63,4 +76,14 @@ public class Employee {
             return 0;
         }
     }
+
+/*    public int punchIn (int time) {
+
+    }
+
+    public int punchOut(int time) {
+
+    }*/
+
+
 }
