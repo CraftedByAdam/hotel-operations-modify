@@ -32,4 +32,25 @@ public class Room {
     public boolean isAvailable() {
         return !isOccupied && !isDirty;
     }
+
+    public void checkIn() {
+        if (isAvailable()) {
+            isOccupied = true;
+            isDirty = true;
+        }
+    }
+    public void checkOut() {
+        isOccupied = false;
+    }
+
+    public void cleanRoom() {
+        if (!isOccupied) {
+            isDirty = false;
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "numberOfBeds: " + numberOfBeds + "| price:" + price + "| isOccupied: " + isOccupied + "| isDirty " + isDirty;
+    }
 }
